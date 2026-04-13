@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+// male male
 int flag = 0;
 time_t flagTime = 0;
 

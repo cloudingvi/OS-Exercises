@@ -18,7 +18,6 @@ void handler(int signum) {
     sleep(3);
     kill(child1, SIGINT);
     kill(child2, SIGINT);
-
 }
 
 int main () {

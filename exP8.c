@@ -15,7 +15,7 @@ int main () {
         char commandLine [1024];
         int colors [] = {31, 33, 32, 36, 34, 95};
         printf("\x1b[%dm" "myshell> " "\x1b[0m", colors[c++]);
-        c %= 6; //faster w/o if statemnt
+        c %= 6;
 
         // parse input
         fgets(commandLine, sizeof(commandLine), stdin);
@@ -27,7 +27,7 @@ int main () {
             command[i++] = parsedLine;
             parsedLine = strtok(NULL, " ");
         }
-        //could be made faster through exit code and switch/case statement
+        
         if (command[0] == NULL) continue; // if empty command, continue
         if ((strcmp(command[0], "exit")) == 0) break; // if exit issued, quit shell
 
