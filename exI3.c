@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <wait.h>
+#include <sys/wait.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>

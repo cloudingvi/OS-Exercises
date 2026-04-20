@@ -36,7 +36,7 @@ int main () {
         perror("readn't");
         return 42;
     }
-    write(STDOUT_FILENO, buffer, sizeof(buffer));
+    write(STDOUT_FILENO, buffer, strlen(buffer));
 
     return 0;
 }
