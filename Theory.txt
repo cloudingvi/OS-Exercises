@@ -97,7 +97,7 @@ atomic_flag_test_and_set(*lock) // wait until lock is acquired
 atomic_flag_clear(*lock) // release lock
 
 
-// POSIX API mutex
+// POSIX API mutexいじ時
 pthread_mutex_t mutex
 pthread_mutex_init(&mutex, NULL) // initialize mutex
 pthread_mutex_lock(&mutex) // lock mutex
@@ -115,14 +115,25 @@ sem_t sem; // create unnamed semaphore (accessible just for threads in a process
 sem_init(*sem, 0, val); // initialize unnamed semaphore (second argument) with value val
 sem_destroy(*sem) // delete unnamed semaphore
 
-// Conditional variables
+// Conditional variables３３絵３ええwqdq２kj
 pthread_cond_t cvar; // create conditional variable
 pthread_cond_init(*cvar, NULL); // init conditional variable
 
 
-// I/O operations
+// I/O operations　・・そぉおjんd
 open(path, mode [| flags]) // open file in <O_RDONLY, O_WRONLY, O_RDWR> modes. Flags are inserted like O_WRONLY | O_APPEND
 int fd = open() // collect file descriptor
 write(fd, buffer, sizeof(buffer)) // write buffer into fd file. Sizeof can be replaced with number of bits to write
 read(fd, buffer, sizeof(buffer)) // read fd into buffer. Sizeof can be replaced with number of bits to read
 close(fd) // close file
+
+
+
+Inter-process Communication
+int fd[2]; 
+    fd[0] = read end; fd[1] = write end
+pipe(fd);
+    creates pipe; returns 0 on success or -1 if failed
+
+FIFO
+int fd = open("/tmp/"myfifo", O_WRONLY);
