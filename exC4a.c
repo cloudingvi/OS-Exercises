@@ -19,6 +19,7 @@ int main () {
         int fd = open("/tmp/myFifo", O_WRONLY);
 
         write(fd, buffer, strlen(buffer));
+        memset(buffer, '\0', sizeof(buffer));
     }
     
     return 0;

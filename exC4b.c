@@ -21,6 +21,7 @@ int main () {
         }
 
         write(STDOUT_FILENO, buffer, strlen(buffer));
+        memset(buffer, '\0', sizeof(buffer));
 
     }
 
