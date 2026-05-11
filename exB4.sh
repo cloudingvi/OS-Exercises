@@ -3,7 +3,7 @@
 echo "Number of users:"
 cat /etc/passwd | wc -l
 
-echo "First 5 entries:"
+echo "First 5 lines:"
 head -n 5 /etc/passwd
 
 if [[ -r /etc/passwd ]]; then

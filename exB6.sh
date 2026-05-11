@@ -1,19 +1,22 @@
 #!/bin/bash
 
-[[ $# -eq 1 ]] || { echo "Usage: $0 path"; exit 1; }
+[[ $# -eq 1 ]] || { echo "Usage: $0 filePath"; exit 1; }
 
 NAME=$1
 
 if [[ -e $NAME ]]; then
     echo "file yes"
-    if [[ -r $NAME ]];
+    if [[ -r $NAME ]]; then
         echo "read too"
         echo "number of lines:"
-        wc --lines $NAME
+        wc -l $NAME
         echo "number of words:"
-        wc --words $NAME
+        wc -w $NAME
         echo "number of characters:"
-        wc --chars $NAME
+        wc -m $NAME
+
+        head -n 7 $NAME | tail -n 4
+
     else
         echo "read nope"
     fi
