@@ -1,0 +1,112 @@
+BASH
+
+
+cat: reads files and writes their contents to the standard output
+    usage: cat file1 file2 file3
+
+touch: creates empty file
+    usage: touch fileName
+
+mkdir: creates empty directory
+    usage: mkdir dirName
+
+    can create parents -p
+    e.g. mkdir -p dir1/dir2/dir3
+
+rm: removes file
+    usage: rm fileName
+
+    can use rmdir to delete empty directory
+    or rmdir -r to recursively delete if not empty
+
+cp: copies file
+    usage: cp fileName
+
+    can be used on directories, needs -r
+
+mv: moves files
+    usage: mv fileName <path>
+
+    can be used to rename files
+    e.g. mv file1 file2 // renames file1 to file2
+
+ps: lists the processes running on the current shell
+
+    ps axu // lists all processes of the system
+    pstree // lists all processes as tree, shows parent-child relationships
+
+top: real-time process viewer
+
+kill: sends a signal to a process (SIGTERM by default)
+    usage: kill -signal <pid>
+
+
+
+curl: interacting with web servers and resources
+    e.g. curl https://www.google.com // prints google html
+
+    flag -O to download the file
+
+wget: downloading files
+    e.g. wget https://www.google.com // downloads file
+
+find: searches for files recursively in a certain directory
+    usage: find . -name "*.txt"
+
+    e.g. find /etc -type d -name "*.d"
+        // searches in directories . and /etc
+        // -name restricts research to "*.d"
+        // -type restricts research to -d = directories
+    
+    it can execute commands on the files it finds
+    e.g. find . -type d -exec ls -l {} \; // lists all files in the current directory and its subdirectories, with long format
+
+    e.g. find . -type f -size +1M // lists all files in current directory and subdirectories larger than 1MB
+
+locate:
+
+grep: searches inside files
+    usage: grep <pattern> <file>
+
+cut: extracts sections from each line of input
+    usage: cut <flags> <file>
+
+    e.g. cut -d "," -f 2 file.csv // lists the second item in each comma-separated-list line of file.csv
+
+
+C
+
+PROCESSES
+
+pid_t fork(): creates a child process
+    returns 0 to the child, the pid of the child to the parent, -1 to the parent if unsuccessful
+
+pid_t wait(): waits for a child process to terminate
+    e.g. wait(NULL); // returns the pid of the first process to terminate
+
+pid_t getpid(void); // returns the process ID of the current process
+
+pid_t getppid(void); // returns the process ID of the parent of the current process
+
+pid_t waitpid(pid_t pid, int *status, int options); // waits for a specific child process to terminate
+
+SIGNALS
+
+#include <signal.h>
+
+'''
+struct sigaction act;
+
+void handler(int signum) {
+    printf("Caught signal %d\n", signum);
+}
+
+int main () {
+    act.sa_handler = handler;
+    sigaction(SIGINT, &act, NULL);
+}
+'''
+
+int sigaction(int signum, const struct sigaction *_Nullable restrict act, struct sigaction *_Nullable restrict oldact);
+    // signum = signal number
+    // act points to struct sigaction defining action to take
